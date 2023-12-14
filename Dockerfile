@@ -1,3 +1,3 @@
-FROM ghcr.io/zhayujie/chatgpt-on-wechat:latest
+FROM ghcr.io/chainsaid/chainsaid-gpt:latest
 
 ENTRYPOINT ["/entrypoint.sh"]
