@@ -98,6 +98,8 @@ class Role(Plugin):
     def on_handle_context(self, e_context: EventContext):
         if e_context["context"].type != ContextType.TEXT:
             return
+        if not conf().get("roleplay_in_group", False):
+            return
         btype = Bridge().get_bot_type("chat")
         if btype not in [const.OPEN_AI, const.CHATGPT, const.CHATGPTONAZURE, const.LINKAI]:
             return

@@ -43,6 +43,7 @@ available_setting = {
     "image_create_size": "256x256",  # 图片大小,可选有 256x256, 512x512, 1024x1024 (dall-e-3默认为1024x1024)
     "group_chat_exit_group": False, 
     "role_customizable": True,
+    "roleplay_in_group": False,  # 是否在群聊中进行角色扮演
     # chatgpt会话参数
     "expires_in_seconds": 3600,  # 无操作会话的过期时间
     # 人格描述
