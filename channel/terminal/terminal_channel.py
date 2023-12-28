@@ -24,6 +24,7 @@ class TerminalMessage(ChatMessage):
         self.from_user_id = from_user_id
         self.to_user_id = to_user_id
         self.other_user_id = other_user_id
+        self.from_user_nickname = from_user_id
 
 
 class TerminalChannel(ChatChannel):
@@ -77,7 +78,7 @@ class TerminalChannel(ChatChannel):
             if check_prefix(prompt, trigger_prefixs) is None:
                 prompt = trigger_prefixs[0] + prompt  # 给没触发的消息加上触发前缀
 
-            context = self._compose_context(ContextType.TEXT, prompt, msg=TerminalMessage(msg_id, prompt))
+            context = self._compose_context(ContextType.TEXT, prompt, isgroup=False, msg=TerminalMessage(msg_id, prompt))
             if context:
                 self.produce(context)
             else:
