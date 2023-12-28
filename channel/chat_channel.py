@@ -146,7 +146,7 @@ class ChatChannel(Channel):
                     return None
             content = content.strip()
             img_match_prefix = check_prefix(content, conf().get("image_create_prefix"))
-            if img_match_prefix:
+            if img_match_prefix and conf().get("enable_image"):
                 content = content.replace(img_match_prefix, "", 1)
                 context.type = ContextType.IMAGE_CREATE
             else:
