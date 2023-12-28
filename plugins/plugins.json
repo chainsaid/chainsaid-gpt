@@ -16,6 +16,10 @@
             "enabled": false,
             "priority": 99
         },
+        "tool": {
+            "enabled": false,
+            "priority": 0
+        },
         "Role": {
             "enabled": true,
             "priority": 0
