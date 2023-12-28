@@ -120,7 +120,7 @@ class Role(Plugin):
             desckey = "descn"
         elif clist[0].lower() == f"{trigger_prefix}role":
             desckey = "description"
-        elif clist[0] == f"{trigger_prefix}设定扮演":
+        elif conf().get("role_customizable") and clist[0] == f"{trigger_prefix}设定扮演":
             customize = True
         elif clist[0] == f"{trigger_prefix}角色类型":
             if len(clist) > 1:
@@ -190,7 +190,8 @@ class Role(Plugin):
             return help_text
         trigger_prefix = conf().get("plugin_trigger_prefix", "$")
         help_text = f"使用方法:\n{trigger_prefix}角色" + " 预设角色名: 设定角色为{预设角色名}。\n" + f"{trigger_prefix}role" + " 预设角色名: 同上，但使用英文设定。\n"
-        help_text += f"{trigger_prefix}设定扮演" + " 角色设定: 设定自定义角色人设为{角色设定}。\n"
+        if conf().get("role_customizable"):
+            help_text += f"{trigger_prefix}设定扮演" + " 角色设定: 设定自定义角色人设为{角色设定}。\n"
         help_text += f"{trigger_prefix}停止扮演: 清除设定的角色。\n"
         help_text += f"{trigger_prefix}角色类型" + " 角色类型: 查看某类{角色类型}的所有预设角色，为所有时输出所有预设角色。\n"
         help_text += "\n目前的角色类型有: \n"
