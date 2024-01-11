@@ -175,6 +175,8 @@ class LinkAIBot(Bot):
         try:
             if context.kwargs.get("isgroup"):
                 group_name = context.kwargs.get("msg").from_user_nickname
+                if conf().get_customer(group_name).get("linkai_app_code"):
+                    return conf().get_customer(group_name).get("linkai_app_code")
                 if config.plugin_config and config.plugin_config.get("linkai"):
                     linkai_config = config.plugin_config.get("linkai")
                     group_mapping = linkai_config.get("group_app_map")
