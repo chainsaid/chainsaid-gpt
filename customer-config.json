@@ -1,0 +1,10 @@
+{
+    "ChatGPT测试群": {
+        "linkai_app_code": "default",
+        "hello_msg": "请你随机使用一种风格说一句问候语来欢迎新用户{}加入ChatGPT测试群。"
+    },
+    "测试群2": {
+        "linkai_app_code": "z2A5Zm4F",
+        "hello_msg": "请你随机使用一种风格说一句问候语来欢迎新用户{}加入测试群2。"
+    }
+}

@@ -168,6 +168,7 @@ class Config(dict):
             self[k] = v
         # user_datas: 用户数据，key为用户名，value为用户数据，也是dict
         self.user_datas = {}
+        self.customer_configs = {}
 
     def __getitem__(self, key):
         if key not in available_setting:
@@ -212,6 +213,22 @@ class Config(dict):
         except Exception as e:
             logger.info("[Config] User datas error: {}".format(e))
 
+    def get_customer(self, customer) -> dict:
+        if self.customer_configs.get(customer) is None:
+            self.customer_configs[customer] = {}
+        return self.customer_configs[customer]
+
+    def load_customer_config(self):
+        try:
+            with open(os.path.join(get_appdata_dir(), "customer-config.json"), "rb") as f:
+                self.customer_configs = json.load(f)
+                logger.info("[Config] Customer configs loaded.")
+        except FileNotFoundError as e:
+            logger.info("[Config] Customer configs file not found, ignore.")
+        except Exception as e:
+            logger.info("[Config] Customer configs error: {}".format(e))
+            self.customer_configs = {}
+
 
 config = Config()
 
@@ -252,6 +269,7 @@ def load_config():
     logger.info("[INIT] load config: {}".format(config))
 
     config.load_user_datas()
+    config.load_customer_config()
 
 
 def get_root():
