@@ -184,6 +184,7 @@ class Role(Plugin):
             prompt = self.roleplays[sessionid].action(content)
             e_context["context"].type = ContextType.TEXT
             e_context["context"].content = prompt
+            e_context["context"]["generate_breaked_by"] = EventAction.BREAK
             e_context.action = EventAction.BREAK
 
     def get_help_text(self, verbose=False, **kwargs):
